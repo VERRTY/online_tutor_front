@@ -9,6 +9,7 @@ export enum AppLinkTheme {
 }
 
 interface NavLinkProps extends LinkProps{
+    className?: string,
     children?: ReactNode,
     theme?: AppLinkTheme
 }
@@ -18,12 +19,13 @@ const AppLink = (props: NavLinkProps) => {
         children,
         to,
         theme = AppLinkTheme.PRIMARY,
+        className,
         ...otherProps
     } = props
     return (
         <NavLink
             to={to}
-            className={classNames(cls.appLink, {}, [cls[theme]])}
+            className={classNames(cls.appLink, {}, [className,cls[theme]])}
             {...otherProps}
         >
             {children}
