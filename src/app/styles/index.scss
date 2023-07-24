@@ -1,2 +1,7 @@
 @import "./variables/global";
+@import "./reset";
 
+body{
+    color: #000;
+    font-family: Montserrat, sans-serif;
+}

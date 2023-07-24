@@ -1,10 +1,14 @@
 import React from 'react';
-import MainPage from "../pages/MainPage/ui/MainPage";
+import {AppRouter} from "./providers/router";
+import {Navbar} from "../widgets/Navbar";
 
 const App = () => {
     return (
         <div>
-          <MainPage/>
+            <Navbar/>
+            <div>
+                <AppRouter/>
+            </div>
         </div>
     );
 };
