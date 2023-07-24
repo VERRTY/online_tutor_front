@@ -1,0 +1,16 @@
+.Category {
+	.mainInfo {
+		margin: 100px;
+		.text {
+			background-color: red($color: #000000);
+			h1 {
+				// color: #000;
+				// font-family: Montserrat;
+				font-size: 96px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: normal;
+			}
+		}
+	}
+}
