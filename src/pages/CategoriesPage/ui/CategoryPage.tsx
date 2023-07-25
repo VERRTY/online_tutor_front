@@ -2,6 +2,9 @@ import cls from './Category.module.scss'
 import { ReactComponent as HomeSVG } from '../../../images/svg/home.svg'
 import { ReactComponent as PesonSVG } from '../../../images/svg/person.svg'
 import { ReactComponent as GroupPerson } from '../../../images/svg/groupOfPerson.svg'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { useHttp } from '../../../app/providers/axios/api'
 
 const CategoryPage = () => {
 	const items = [
@@ -31,6 +34,25 @@ const CategoryPage = () => {
 			status: 5,
 		},
 	]
+
+	const { loading, request } = useHttp()
+
+	const post = async () => {
+		try {
+			const data = await request('classes/groups', 'post', {
+				title: 'gdgasdsag',
+				description: 'string',
+				price: 0,
+				coverUrl: 'string',
+				startDateTime: '2023-07-25T12:46:14.957Z',
+				finishDateTime: '2023-07-25T12:46:14.957Z',
+			})
+			console.log(data)
+		} catch (error) {
+			console.error('Error fetching courses:', error)
+		}
+	}
+
 	return (
 		<div className={cls.Category}>
 			<div className={cls.mainInfo}>
@@ -60,7 +82,7 @@ const CategoryPage = () => {
 				<h1>Лучшие индивидуальные занятия</h1>
 				<div className={cls.itemsBlock}>
 					{items.map(item => (
-						<div className={cls.item}>
+						<div className={cls.item} key={item.id}>
 							<div>{item.title}</div>
 						</div>
 					))}
