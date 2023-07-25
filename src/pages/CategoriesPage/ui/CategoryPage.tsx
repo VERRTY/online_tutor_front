@@ -2,9 +2,20 @@ import cls from './Category.module.scss'
 import { ReactComponent as HomeSVG } from '../../../images/svg/home.svg'
 import { ReactComponent as PesonSVG } from '../../../images/svg/person.svg'
 import { ReactComponent as GroupPerson } from '../../../images/svg/groupOfPerson.svg'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useHttp } from '../../../app/providers/axios/api'
+
+interface Data {
+	id: number
+	description: string
+	coverUrl: string
+	finishDateTime: string
+	createdDate: string
+	price: number
+	title: string
+	startDateTime: string
+}
 
 const CategoryPage = () => {
 	const items = [
@@ -35,23 +46,23 @@ const CategoryPage = () => {
 		},
 	]
 
+	const [uploadData, setUploadData] = useState<Data[]>()
+
 	const { loading, request } = useHttp()
 
-	const post = async () => {
+	const getData = async () => {
 		try {
-			const data = await request('classes/groups', 'post', {
-				title: 'gdgasdsag',
-				description: 'string',
-				price: 0,
-				coverUrl: 'string',
-				startDateTime: '2023-07-25T12:46:14.957Z',
-				finishDateTime: '2023-07-25T12:46:14.957Z',
-			})
+			const data: any = await request('classes/groups', 'get')
 			console.log(data)
+			setUploadData(data)
 		} catch (error) {
 			console.error('Error fetching courses:', error)
 		}
 	}
+
+	useEffect(() => {
+		getData()
+	}, [])
 
 	return (
 		<div className={cls.Category}>
@@ -81,11 +92,15 @@ const CategoryPage = () => {
 			<div className={cls.topIndividual}>
 				<h1>Лучшие индивидуальные занятия</h1>
 				<div className={cls.itemsBlock}>
-					{items.map(item => (
-						<div className={cls.item} key={item.id}>
-							<div>{item.title}</div>
-						</div>
-					))}
+					{uploadData &&
+						uploadData.map(item => (
+							<div className={cls.item} key={item.id}>
+								<div>{item.title}</div>
+								<div>
+									<img src={item.coverUrl} alt='' />
+								</div>
+							</div>
+						))}
 				</div>
 				<div
 					style={{ display: 'flex', justifyContent: 'center', marginTop: 48 }}

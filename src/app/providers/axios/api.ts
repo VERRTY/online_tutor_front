@@ -1,6 +1,12 @@
 import { useCallback, useState } from 'react'
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 
+// Определите обобщенный интерфейс для данных ответа
+interface ApiResponse<T> {
+	content: T
+	// Добавьте другие свойства ответа, если есть
+}
+
 const hostURL = 'https://online-tutor-back.onrender.com'
 export const baseURL = `${hostURL}`
 
@@ -23,12 +29,12 @@ export const useHttp = () => {
 		): Promise<T> => {
 			try {
 				setLoading(true)
-				const response = await api.request<T>({
+				const response: AxiosResponse<ApiResponse<T>> = await api.request({
 					url,
 					method,
 					data: body,
 				})
-				return response.data
+				return response.data.content
 			} catch (error) {
 				throw error
 			} finally {
