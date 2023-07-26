@@ -5,6 +5,9 @@ import { ReactComponent as GroupPerson } from '../../../shared/assets/svg/groupO
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useHttp } from '../../../app/providers/axios/api'
+import { Card } from '../../../widgets/Card'
+import { useSelector } from 'react-redux'
+import { BigCard } from '../../../widgets/BigCard'
 
 interface Data {
 	id: number
@@ -18,34 +21,6 @@ interface Data {
 }
 
 const CategoryPage = () => {
-	const items = [
-		{
-			id: 1,
-			title: 'Hello',
-			status: 3,
-		},
-		{
-			id: 2,
-			title: 'Hello',
-			status: 3,
-		},
-		{
-			id: 3,
-			title: 'Hello',
-			status: 3,
-		},
-		{
-			id: 4,
-			title: 'Hello',
-			status: 5,
-		},
-		{
-			id: 5,
-			title: 'Hello',
-			status: 5,
-		},
-	]
-
 	const [uploadData, setUploadData] = useState<Data[]>()
 
 	const { loading, request } = useHttp()
@@ -63,6 +38,8 @@ const CategoryPage = () => {
 	useEffect(() => {
 		getData()
 	}, [])
+
+	console.log(uploadData)
 
 	return (
 		<div className={cls.Category}>
@@ -95,14 +72,7 @@ const CategoryPage = () => {
 				<h1>Лучшие индивидуальные занятия</h1>
 				<div className={cls.itemsBlock}>
 					{uploadData &&
-						uploadData.map(item => (
-							<div className={cls.item} key={item.id}>
-								<div>{item.title}</div>
-								<div>
-									<img src={item.coverUrl} alt='' />
-								</div>
-							</div>
-						))}
+						uploadData.map(item => <Card key={item.id} price={item.price} />)}
 				</div>
 				<div
 					style={{ display: 'flex', justifyContent: 'center', marginTop: 48 }}
@@ -113,13 +83,7 @@ const CategoryPage = () => {
 			<div className={cls.topIndividual}>
 				<h1>Лучшие индивидуальные занятия</h1>
 				<div className={cls.itemsBlock}>
-					{items
-						.filter(item => item.status === 3)
-						.map(item => (
-							<div key={item.id} className={cls.groupItem}>
-								<div>{item.title}</div>
-							</div>
-						))}
+					<BigCard />
 				</div>
 				<div
 					style={{ display: 'flex', justifyContent: 'center', marginTop: 48 }}
