@@ -1,24 +1,30 @@
-import React from 'react';
+import React, {memo} from 'react';
 import cls from './CardDetails.module.scss'
 import Button, {ButtonTheme} from "../../../../shared/ui/Button/Button";
+import {AppRoutes} from "../../../../shared/config/routeConfig/routeConfig";
+import {useNavigate} from "react-router-dom";
 
 interface CardDetailsProps{
     id: number,
     cost?: number
-    redirect?: (id: number) => void
 }
 
-const CardDetails = (props: CardDetailsProps) => {
+const CardDetails = memo((props: CardDetailsProps) => {
+    const navigate = useNavigate()
     const {
         id,
         cost,
-        redirect
     } = props
+
+    const redirectToIndividualPage = () =>{
+        navigate(AppRoutes.ABOUT +'/' + id)
+    }
+
     return (
         <div className={cls.cardDetails}>
             <Button
                 theme={ButtonTheme.SMALL}
-                onClick={() => redirect(id)}
+                onClick={() => redirectToIndividualPage()}
             >
                 Посмотреть
             </Button>
@@ -27,6 +33,6 @@ const CardDetails = (props: CardDetailsProps) => {
             </p>
         </div>
     );
-};
+});
 
 export default CardDetails;

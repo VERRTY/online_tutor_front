@@ -1,6 +1,6 @@
 
-.card{
-    width: 230px;
+.card {
+
     border: 1px solid #D9D9D9;
     border-radius: 15px;
     display: flex;
@@ -8,22 +8,35 @@
     margin: 0 0 30px 0;
 }
 
-.content{
+.individual {
+    width: 230px;
+}
+
+.groups {
+    width: 340px;
+}
+
+.info{
+    text-align: left;
+}
+
+.content {
     margin: 15px;
 }
 
-.author{
+.author {
     padding: 6px 0;
     border-bottom: 1px solid #D9D9D9;
 }
 
-.details{
+.details {
     margin: 6px 0;
 }
 
 .img {
     z-index: -1;
-    img{
+
+    img {
         border-radius: 15px;
         width: 230px;
         height: 150px;

@@ -1,14 +1,14 @@
 import cls from './CourseList.module.scss'
 import classNames from "classnames";
-import {IndividualsCourses} from "../../model/types/CourseIndividual";
+import {Course} from "../../model/types/CourseIndividual";
 import {Card} from "../../../../widgets/Card";
 import {memo} from "react";
+import Loader from "../../../../shared/ui/Loader/Loader";
 
 interface CourseListProps {
     className?: string,
     isLoading: boolean,
-    courses: IndividualsCourses[],
-    redirect?: (id: number) => void
+    courses: Course[],
 }
 
 export const CourseList = memo((props: CourseListProps) => {
@@ -16,7 +16,6 @@ export const CourseList = memo((props: CourseListProps) => {
         className,
         isLoading,
         courses,
-        redirect
     } = props
 
 
@@ -24,12 +23,11 @@ export const CourseList = memo((props: CourseListProps) => {
         <>
             <div className={classNames(cls.CourseList, {}, [className])}>
                 {courses.map((course) =>
-                    <Card course={course} key={course.id} redirect={redirect}/>
+                    <Card course={course} key={course.id}/>
                 )}
             </div>
-
             {isLoading && <div className={cls.loading}>
-                Loading...
+                <Loader/>
             </div>}</>
     );
 });

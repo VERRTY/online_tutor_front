@@ -1,8 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IndividualsCourses, IndividualsCoursesSchema} from "../types/CourseIndividual";
+import {Course, IndividualsCoursesSchema} from "../types/CourseIndividual";
 import {fetchIndividualsCourses} from "../services/fetchIndividualsCourses";
 
-const CoursesData: IndividualsCourses[] = [
+const CoursesData: Course[] = [
     // {
     //     id: 1,
     //     description: "dsffsdfd sdfsd fsdfsd fsd fsdf sdfsd",

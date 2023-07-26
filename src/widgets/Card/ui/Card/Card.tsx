@@ -5,24 +5,29 @@ import ShortText, {ShortTextTheme} from "../../../../shared/ui/ShortText/ShortTe
 import {CardAuthor} from "../CardAuthor/CardAuthor";
 import CardDetails from "../CardDetails/CardDetails";
 import imgIcon from '../../../../shared/assets/23615491-1668532305.webp.png'
-import {IndividualsCourses} from "../../../../entitise/CourseIndividual";
+import {Course} from "../../../../entitise/CourseIndividual";
+import {CardTime} from "../CardTime/CardTime";
+
+export enum CardType {
+    INDIVIDUAL = 'individual',
+    GROUPS = 'groups'
+}
 
 interface CardProps {
-    course: IndividualsCourses
+    course: Course
     className?: string,
-    redirect?: (id: number) => void
+    type?: CardType
 }
 
 export const Card = memo((props: CardProps) => {
     const {
         className,
         course,
-        redirect
+        type = CardType.INDIVIDUAL
     } = props
 
-
     return (
-        <div className={classNames(cls.card, {}, [className])}>
+        <div className={classNames(cls.card, {}, [className, cls[type]])}>
             <div className={cls.img}>
                 {!course.coverUrl
                     ?
@@ -34,13 +39,18 @@ export const Card = memo((props: CardProps) => {
             </div>
             <div className={cls.content}>
                 <div className={cls.info}>
-                    <ShortText text={course.title} theme={ShortTextTheme.WITHATTENUATION}/>
+                    <ShortText text={course.title} theme={ShortTextTheme.WITHATTENUATION} length={50}/>
+                </div>
+                <div>
+                    {type === CardType.GROUPS &&
+                        <CardTime startDateTime={course.startDateTime} finishDateTime={course.finishDateTime}/>
+                    }
                 </div>
                 <div className={cls.author}>
                     <CardAuthor/>
                 </div>
-                <div className={cls.details} >
-                    <CardDetails cost={course.price} redirect={redirect} id={course.id}/>
+                <div className={cls.details}>
+                    <CardDetails cost={course.price} id={course.id}/>
                 </div>
             </div>
         </div>

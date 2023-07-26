@@ -5,27 +5,25 @@ import {useSelector} from "react-redux";
 import {
     getIndividualsCoursesLoading
 } from "../../../entitise/CourseIndividual/model/selectors/getIndividualsCoursesLoading";
-import {courseIndividualActions, IndividualsCourses} from "../../../entitise/CourseIndividual";
+import {courseIndividualActions} from "../../../entitise/CourseIndividual";
 import {fetchIndividualsCourses} from "../../../entitise/CourseIndividual/model/services/fetchIndividualsCourses";
 import {useAppDispatch} from "../../../shared/hooks/useAppDispatch/useAppDispatch";
 import classNames from "classnames";
-import {memo} from "react";
-import {useNavigate} from "react-router-dom";
+import {memo, useEffect} from "react";
+import {getIndividualsCourses} from "../../../entitise/CourseIndividual/model/selectors/getIndividualsCourses";
 
 interface IndividualCourseProps {
     className?: string,
     title?: string
-    Course: IndividualsCourses[]
 }
 
 export const IndividualCourseBlock = memo((props: IndividualCourseProps) => {
     const {
         className,
-        Course
     } = props
-    const dispatch = useAppDispatch()
-    const navigate = useNavigate()
 
+    const dispatch = useAppDispatch()
+    const individualsCourses = useSelector(getIndividualsCourses)
     const isLoading = useSelector(getIndividualsCoursesLoading)
 
     const handleAddCourse = async () => {
@@ -33,16 +31,23 @@ export const IndividualCourseBlock = memo((props: IndividualCourseProps) => {
         await dispatch(fetchIndividualsCourses({}))
     }
 
-    const redirectToIndividualPage = (id: number) =>{
-        navigate('about/' + id)
-    }
+    useEffect(() => {
+        const getIndividuals = async () => {
+            await dispatch(fetchIndividualsCourses({}))
+        }
+        getIndividuals()
+
+        return () => {
+            dispatch(courseIndividualActions.clear())
+        }
+    }, [dispatch])
 
     return (
         <div className={classNames(cls.individualCourse, {}, [className])}>
             <h2 className={cls.title}>
                 Лучшие индивидуальные занятия
             </h2>
-            <CourseList isLoading={isLoading} courses={Course} redirect={redirectToIndividualPage}/>
+            <CourseList isLoading={isLoading} courses={individualsCourses}/>
             <Button
                 className={cls.btnText}
                 theme={ButtonTheme.DEFAULT}
