@@ -1,16 +1,20 @@
-export interface Course {
+export interface IndividualsCourses {
     id: number
-    description: string
-    coverUrl: string
-    finishDateTime: string
-    createdDate: string
-    price: number
     title: string
-    startDateTime: string
+    price: number
+    coverUrl: string
+    createdDate: string
+    description: string
+    durationInSeconds: number
+    // finishDateTime: string
+    // startDateTime: string
 }
 
-export interface CourseSchema{
-    data?:  Course[],
+export interface IndividualsCoursesSchema {
+    data?:  IndividualsCourses[],
     isLoading: boolean,
-    error?: string,
+    error?: object,
+    page?: number,
+    limit?: number
+    HasMore?: boolean
 }

@@ -14,7 +14,7 @@ export const CardAuthor = (props: AuthorCardProps) => {
     return (
         <div className={classNames(cls.authorCard, {}, [])}>
             <span className={cls.circle}></span>
-            <ShortText text={'Valeria_Galchenko'} theme={ShortTextTheme.WITHATTENUATION}/>
+            <ShortText text={'Valeria_Galchenko'} length={15} theme={ShortTextTheme.WITHATTENUATION}/>
         </div>
     );
 };

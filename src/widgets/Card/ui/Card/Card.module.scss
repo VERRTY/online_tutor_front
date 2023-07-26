@@ -5,6 +5,7 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    margin: 0 0 30px 0;
 }
 
 .content{
@@ -21,5 +22,11 @@
 }
 
 .img {
-
+    z-index: -1;
+    img{
+        border-radius: 15px;
+        width: 230px;
+        height: 150px;
+        object-fit: fill;
+    }
 }

@@ -3,18 +3,23 @@ import cls from './CardDetails.module.scss'
 import Button, {ButtonTheme} from "../../../../shared/ui/Button/Button";
 
 interface CardDetailsProps{
-    id?: number,
+    id: number,
     cost?: number
+    redirect?: (id: number) => void
 }
 
 const CardDetails = (props: CardDetailsProps) => {
     const {
         id,
-        cost
+        cost,
+        redirect
     } = props
     return (
         <div className={cls.cardDetails}>
-            <Button theme={ButtonTheme.SMALL}>
+            <Button
+                theme={ButtonTheme.SMALL}
+                onClick={() => redirect(id)}
+            >
                 Посмотреть
             </Button>
             <p className={cls.cost}>

@@ -1,7 +1,7 @@
 
 export type {
-    Course,
-    CourseSchema
+    IndividualsCourses,
+    IndividualsCoursesSchema
 } from './model/types/CourseIndividual'
 
 export {
