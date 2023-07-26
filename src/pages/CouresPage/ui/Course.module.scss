@@ -1,0 +1,65 @@
+.coursePage {
+	width: 100%;
+	padding: 62px 64px 59px 64px;
+	.mainInfo {
+		.text {
+			font-size: 64px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 103px; /* 160.938% */
+			.shortInfoBlock {
+				display: flex;
+				align-items: center;
+				gap: 63px;
+				margin-top: 40px;
+				.svgImage {
+					width: 660px;
+					height: 472px;
+				}
+				.description {
+					width: 620px;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					height: 472px;
+					.about {
+						font-size: 20px;
+						font-style: normal;
+						font-weight: 600;
+						line-height: 30px; /* 150% */
+						flex-grow: 1;
+					}
+					.descriptInfo {
+						font-size: 14px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 22px; /* 157.143% */
+						flex-grow: 1;
+					}
+				}
+			}
+		}
+	}
+	.detailsBlock {
+		display: flex;
+		margin-top: 38px;
+		gap: 33px;
+		.teacherInfo {
+			width: 336px;
+			height: 379px;
+			flex-shrink: 0;
+			border: 1px solid #e8e8e8;
+			background: #fafafa;
+			padding: 16px 24px;
+		}
+		.shortDetails {
+			display: inline-flex;
+			padding: 1px 1px 5px 1px;
+			align-items: flex-start;
+			border: 1px solid #e8e8e8;
+			background: #fff;
+			height: 206px;
+			width: 334px;
+		}
+	}
+}

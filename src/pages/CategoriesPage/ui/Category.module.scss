@@ -24,8 +24,11 @@
 		}
 	}
 	.undeLine {
-		height: 1px;
-		background-color: #000000;
+		border-bottom: 1px solid black;
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+		right: 0;
 	}
 	.choseCategory {
 		margin-top: 64px;

@@ -1,7 +1,7 @@
 import cls from './Category.module.scss'
-import { ReactComponent as HomeSVG } from '../../../images/svg/home.svg'
-import { ReactComponent as PesonSVG } from '../../../images/svg/person.svg'
-import { ReactComponent as GroupPerson } from '../../../images/svg/groupOfPerson.svg'
+import { ReactComponent as HomeSVG } from '../../../shared/assets/svg/home.svg'
+import { ReactComponent as PesonSVG } from '../../../shared/assets/svg/person.svg'
+import { ReactComponent as GroupPerson } from '../../../shared/assets/svg/groupOfPerson.svg'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useHttp } from '../../../app/providers/axios/api'
@@ -75,7 +75,9 @@ const CategoryPage = () => {
 					<HomeSVG />
 				</div>
 			</div>
-			<div className={cls.undeLine}></div>
+			<div style={{ position: 'relative' }}>
+				<span className={cls.undeLine}></span>
+			</div>
 			<div className={cls.choseCategory}>
 				<p className={cls.text}>Выберите тип обучения</p>
 				<div className={cls.buttonsBlock}>
