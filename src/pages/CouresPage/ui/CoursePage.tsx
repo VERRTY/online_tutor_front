@@ -1,7 +1,6 @@
 import cls from './Course.module.scss'
 import { ReactComponent as StudyImage } from '../../../shared/assets/svg/studyImage.svg'
-import { ReactComponent as TeacherAvatar } from '../../../shared/assets/svg/teacherAvatar.svg'
-import { ReactComponent as IO } from '../../../shared/assets/svg/i.svg'
+import { InfoCard } from '../../../widgets/InfoCard'
 
 const CoursePage = () => {
 	return (
@@ -45,22 +44,7 @@ const CoursePage = () => {
 				</div>
 			</div>
 			<div className={cls.detailsBlock}>
-				<div className={cls.teacherInfo}>
-					<div style={{ display: 'flex', gap: 15 }}>
-						<TeacherAvatar />
-						<div>
-							<p>renagaruuu</p>
-							<p>Артем</p>
-							<div
-								style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
-							>
-								<p>Профессионал</p>
-								<IO />
-								<p>Офлайн</p>
-							</div>
-						</div>
-					</div>
-				</div>
+				<InfoCard />
 				<div className={cls.shortDetails}></div>
 			</div>
 		</div>
