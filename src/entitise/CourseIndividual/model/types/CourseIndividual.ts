@@ -1,16 +1,21 @@
 export interface Course {
     id: number
-    description: string
-    coverUrl: string
-    finishDateTime: string
-    createdDate: string
-    price: number
     title: string
-    startDateTime: string
+    price: number
+    coverUrl: string
+    createdDate: string
+    description: string
+    durationInSeconds?: number
+    categoryIds?: number | undefined
+    finishDateTime?: string | undefined
+    startDateTime?: string | undefined
 }
 
-export interface CourseSchema{
+export interface IndividualsCoursesSchema {
     data?:  Course[],
     isLoading: boolean,
-    error?: string,
+    error?: object,
+    page?: number,
+    limit?: number
+    HasMore?: boolean
 }

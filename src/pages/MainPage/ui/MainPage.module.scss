@@ -1,8 +1,11 @@
+.MainPage{
+    padding: 0 64px 0 64px;
+}
+
 .presentation{
     display: flex;
     position: relative;
     margin: 84px 0 0 0;
-    padding: 0 64px 0 64px;
 
     .mainText{
         flex: 1 1 auto;
@@ -28,9 +31,11 @@
         border-bottom: 1px solid black;
         position: absolute;
         bottom: 0;
-        left: 0;
-        right: 0;
+        left: -64px;
+        right: -64px;
     }
-
-
 }
+
+
+
+

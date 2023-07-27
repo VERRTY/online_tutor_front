@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {memo} from 'react';
 import cls from './Navbar.module.scss'
 import {ReactComponent as LogoIcon} from '../../../shared/assets/logo.svg'
 import AppLink, {AppLinkTheme} from "../../../shared/ui/AppLink/AppLink";
 import {RoutePath} from "../../../shared/config/routeConfig/routeConfig";
 
-export const Navbar = () => {
+export const Navbar = memo(() => {
     return (
         <div className={cls.navbar}>
             <div className={cls.logo}>
@@ -30,4 +30,4 @@ export const Navbar = () => {
             </div>
         </div>
     );
-};
+});

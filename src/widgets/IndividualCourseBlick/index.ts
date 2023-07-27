@@ -1,0 +1,1 @@
+export { IndividualCourseBlock } from './ui/IndividualCourseBlock'

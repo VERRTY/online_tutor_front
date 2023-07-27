@@ -1,11 +1,10 @@
 import cls from './MainPage.module.scss'
 import PresentationImg from '../../../shared/assets/Presentation.png'
-import {Card} from "../../../widgets/Card";
-
+import {IndividualCourseBlock} from "../../../widgets/IndividualCourseBlick";
 
 const MainPage = () => {
     return (
-        <div>
+        <div className={cls.MainPage}>
             <div className={cls.presentation}>
                 <div className={cls.mainText}>
                     <h1>
@@ -18,9 +17,8 @@ const MainPage = () => {
                 </div>
                 <span className={cls.line}></span>
             </div>
-            {/*<div className={}>*/}
-            {/*</div>*/}
-            <Card />
+
+            <IndividualCourseBlock/>
         </div>
     );
 };
