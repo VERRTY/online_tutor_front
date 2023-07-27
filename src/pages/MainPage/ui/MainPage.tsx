@@ -1,7 +1,7 @@
 import cls from './MainPage.module.scss'
 import PresentationImg from '../../../shared/assets/Presentation.png'
-import {IndividualCourseBlock} from "../../../widgets/IndividualCourseBlick";
-import {GroupCourseBlock} from "../../../widgets/GroupCourseBlick";
+import {IndividualCourseBlock} from "../../../features/IndividualCourseBlick";
+import {GroupCourseBlock} from "../../../features/GroupCourseBlick";
 
 const MainPage = () => {
     return (
