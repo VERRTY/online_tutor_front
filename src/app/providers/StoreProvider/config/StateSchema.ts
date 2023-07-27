@@ -1,7 +1,9 @@
-import {IndividualsCoursesSchema} from "../../../../entitise/CourseIndividual";
+import {CoursesSchema} from "../../../../entitise/Course";
+
 
 export interface StateSchema {
-    CourseIndividual: IndividualsCoursesSchema
+    CourseIndividual: CoursesSchema
+    CourseGroup: CoursesSchema
 }
 
 export interface ThunkConfig<T> {

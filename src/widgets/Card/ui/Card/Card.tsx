@@ -5,8 +5,8 @@ import ShortText, {ShortTextTheme} from "../../../../shared/ui/ShortText/ShortTe
 import {CardAuthor} from "../CardAuthor/CardAuthor";
 import CardDetails from "../CardDetails/CardDetails";
 import imgIcon from '../../../../shared/assets/23615491-1668532305.webp.png'
-import {Course} from "../../../../entitise/CourseIndividual";
 import {CardTime} from "../CardTime/CardTime";
+import {Course} from "../../../../entitise/Course";
 
 export enum CardType {
     INDIVIDUAL = 'individual',
@@ -41,7 +41,7 @@ export const Card = memo((props: CardProps) => {
                 <div className={cls.info}>
                     <ShortText text={course.title} theme={ShortTextTheme.WITHATTENUATION} length={50}/>
                 </div>
-                <div>
+                <div className={cls.cardTime}>
                     {type === CardType.GROUPS &&
                         <CardTime startDateTime={course.startDateTime} finishDateTime={course.finishDateTime}/>
                     }

@@ -5,13 +5,14 @@ export interface Course {
     coverUrl: string
     createdDate: string
     description: string
+    categoryIds: number | undefined
     durationInSeconds?: number
-    categoryIds?: number | undefined
-    finishDateTime?: string | undefined
-    startDateTime?: string | undefined
+    finishDateTime?: string
+    startDateTime?: string
+    classType: string
 }
 
-export interface IndividualsCoursesSchema {
+export interface CoursesSchema {
     data?:  Course[],
     isLoading: boolean,
     error?: object,

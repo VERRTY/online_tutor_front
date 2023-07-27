@@ -1,52 +1,54 @@
-import cls from './IndividualCourseBlick.module.scss'
+import cls from './GroupCourseBlock.module.scss'
 import {CourseList} from "../../CourseList/CourseList";
 import Button, {ButtonTheme} from "../../../shared/ui/Button/Button";
 import {useSelector} from "react-redux";
-import {fetchIndividualsCourses} from "../../../entitise/CourseIndividual/model/services/fetchIndividualsCourses";
 import {useAppDispatch} from "../../../shared/hooks/useAppDispatch/useAppDispatch";
 import classNames from "classnames";
 import {memo, useEffect} from "react";
 import {
-    courseIndividualActions,
-    getIndividualsCourses,
-    getIndividualsCoursesLoading
-} from "../../../entitise/CourseIndividual";
+    getGroupCourses,
+    getGroupCoursesLoading
+} from "../../../entitise/CourseGroupe/model/selectors/GroupCoursesSelectors";
+import {fetchGroupCourses} from "../../../entitise/CourseGroupe/model/services/fetchGroupCourses";
+import {courseGroupActions} from "../../../entitise/CourseGroupe";
+import {CardType} from "../../Card/ui/Card/Card";
 
 interface IndividualCourseProps {
     className?: string,
 }
 
-export const IndividualCourseBlock = memo((props: IndividualCourseProps) => {
+export const GroupCourseBlock = memo((props: IndividualCourseProps) => {
     const {
         className,
     } = props
 
     const dispatch = useAppDispatch()
-    const individualsCourses = useSelector(getIndividualsCourses)
-    const isLoading = useSelector(getIndividualsCoursesLoading)
+    const GroupCourses = useSelector(getGroupCourses)
+    const isLoading = useSelector(getGroupCoursesLoading)
+    dispatch(courseGroupActions.setLimit(9))
 
     const handleAddCourse = async () => {
-        dispatch(courseIndividualActions.incrementPage())
-        await dispatch(fetchIndividualsCourses({}))
+        dispatch(courseGroupActions.incrementPage())
+        await dispatch(fetchGroupCourses({}))
     }
 
     useEffect(() => {
         const getIndividuals = async () => {
-            await dispatch(fetchIndividualsCourses({}))
+            await dispatch(fetchGroupCourses({}))
         }
         getIndividuals()
 
         return () => {
-            dispatch(courseIndividualActions.clear())
+            dispatch(courseGroupActions.clear())
         }
     }, [dispatch])
 
     return (
         <div className={classNames(cls.individualCourse, {}, [className])}>
             <h2 className={cls.title}>
-                Лучшие индивидуальные занятия
+                Лучшие групповые занятия
             </h2>
-            <CourseList isLoading={isLoading} courses={individualsCourses}/>
+            <CourseList isLoading={isLoading} courses={GroupCourses} type={CardType.GROUPS}/>
             <Button
                 className={cls.btnText}
                 theme={ButtonTheme.DEFAULT}

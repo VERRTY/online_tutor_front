@@ -3,7 +3,6 @@ import { ReactComponent as HomeSVG } from '../../../images/svg/home.svg'
 import { ReactComponent as PesonSVG } from '../../../images/svg/person.svg'
 import { ReactComponent as GroupPerson } from '../../../images/svg/groupOfPerson.svg'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useHttp } from '../../../app/providers/axios/api'
 
 interface Data {

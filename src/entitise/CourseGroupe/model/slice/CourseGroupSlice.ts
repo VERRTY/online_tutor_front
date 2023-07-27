@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchIndividualsCourses} from "../services/fetchIndividualsCourses";
 import {Course, CoursesSchema} from "../../../Course";
+import {fetchGroupCourses} from "../services/fetchGroupCourses";
 
 const CoursesData: Course[] = [
     // {
@@ -46,8 +46,8 @@ const initialState: CoursesSchema = {
     page: 0
 };
 
-export const courseIndividualSlice = createSlice({
-    name: 'courseIndividual',
+export const courseGroupSlice = createSlice({
+    name: 'courseGroup',
     initialState,
     reducers: {
         setPage: (state, action: PayloadAction<number>) => {
@@ -64,19 +64,19 @@ export const courseIndividualSlice = createSlice({
         }
     },
     extraReducers: (build)=>{
-        build.addCase(fetchIndividualsCourses.pending, (state, action) =>{
+        build.addCase(fetchGroupCourses.pending, (state, action) =>{
             state.isLoading = true
         })
-        .addCase(fetchIndividualsCourses.fulfilled, (state, action) =>{
+        .addCase(fetchGroupCourses.fulfilled, (state, action) =>{
             state.isLoading = false
             state.data.push(...action.payload)
         })
-        .addCase(fetchIndividualsCourses.rejected, (state, action) =>{
+        .addCase(fetchGroupCourses.rejected, (state, action) =>{
             state.isLoading = false
             state.error = action.payload
         })
     }
 })
 
-export const { actions: courseIndividualActions } = courseIndividualSlice;
-export const { reducer: courseIndividualReducer } = courseIndividualSlice;
+export const { actions: courseGroupActions } = courseGroupSlice;
+export const { reducer: courseGroupReducer } = courseGroupSlice;

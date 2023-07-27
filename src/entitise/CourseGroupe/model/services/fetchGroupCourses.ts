@@ -1,18 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {$api} from "../../../../shared/API/api";
-import {getIndividualsCoursesLimit, getIndividualsCoursesPage} from "../selectors/individualsCoursesSelectors";
 import {ThunkConfig} from "../../../../app/providers/StoreProvider/config/StateSchema";
+import {getGroupCoursesLimit, getGroupCoursesPage} from "../selectors/GroupCoursesSelectors";
 import {Course} from "../../../Course";
 
 
-export const fetchIndividualsCourses = createAsyncThunk<Array<Course>,object, ThunkConfig<object>>(
-    'courseIndividual/fetchIndividualsCourses',
+export const fetchGroupCourses = createAsyncThunk<Array<Course>,object, ThunkConfig<object>>(
+    'courseGroup/fetchCourseGroup',
     async (props, thunkAPI) => {
         const { getState } = thunkAPI;
-        const limit = getIndividualsCoursesLimit(getState())
-        const page = getIndividualsCoursesPage(getState())
+        const limit = getGroupCoursesLimit(getState())
+        const page = getGroupCoursesPage(getState())
         try {
-            const response = await $api.get('classes/individuals',
+            const response = await $api.get('classes/groups',
                 {params: {
                         size: limit,
                         page
