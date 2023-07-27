@@ -1,6 +1,6 @@
 export {
     courseIndividualActions,
-    courseIndividualReducer
+    courseIndividualReducer,
 } from './model/slice/CourseIndividualSlice'
 
 export {

@@ -2,6 +2,7 @@ import cls from './MainPage.module.scss'
 import PresentationImg from '../../../shared/assets/Presentation.png'
 import {IndividualCourseBlock} from "../../../features/IndividualCourseBlick";
 import {GroupCourseBlock} from "../../../features/GroupCourseBlick";
+import {CategoriesList} from "../../../features/Categories/ui/CategoriesList/CategoriesList";
 
 const MainPage = () => {
     return (
@@ -17,6 +18,9 @@ const MainPage = () => {
                     <img src={PresentationImg} alt="Presentation"/>
                 </div>
                 <span className={cls.line}></span>
+            </div>
+            <div>
+                <CategoriesList/>
             </div>
             <IndividualCourseBlock/>
             <GroupCourseBlock/>

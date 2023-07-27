@@ -50,7 +50,7 @@ export const Card = memo((props: CardProps) => {
                     <CardAuthor/>
                 </div>
                 <div className={cls.details}>
-                    <CardDetails cost={course.price} id={course.id}/>
+                    <CardDetails cost={course.price} id={course.id} classType={course.classType}/>
                 </div>
             </div>
         </div>

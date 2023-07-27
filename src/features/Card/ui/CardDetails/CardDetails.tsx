@@ -6,7 +6,8 @@ import {useNavigate} from "react-router-dom";
 
 interface CardDetailsProps{
     id: number,
-    cost?: number
+    cost?: number,
+    classType: string
 }
 
 const CardDetails = memo((props: CardDetailsProps) => {
@@ -14,10 +15,11 @@ const CardDetails = memo((props: CardDetailsProps) => {
     const {
         id,
         cost,
+        classType
     } = props
 
     const redirectToIndividualPage = () =>{
-        navigate(AppRoutes.ABOUT +'/' + id)
+        navigate(AppRoutes.ABOUT +`/${classType}/` + id)
     }
 
     return (

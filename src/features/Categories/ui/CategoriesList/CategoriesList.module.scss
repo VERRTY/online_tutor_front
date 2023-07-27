@@ -1,0 +1,19 @@
+.CategoriesList{
+    display: flex;
+    flex-wrap: wrap;
+    //gap: 32px
+}
+
+.CategoriesItem {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 50%;
+    margin: 21px 0 21px 0;
+    font-size: 24px;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

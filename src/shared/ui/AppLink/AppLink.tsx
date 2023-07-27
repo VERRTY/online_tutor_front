@@ -5,7 +5,8 @@ import cls from './AppLink.module.scss'
 
 export enum AppLinkTheme {
     PRIMARY = 'primary',
-    UNDERLINED = 'underlined'
+    UNDERLINED = 'underlined',
+
 }
 
 interface NavLinkProps extends LinkProps{

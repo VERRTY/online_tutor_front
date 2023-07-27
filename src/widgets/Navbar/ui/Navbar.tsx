@@ -1,25 +1,25 @@
 import React, {memo} from 'react';
 import cls from './Navbar.module.scss'
-import {ReactComponent as LogoIcon} from '../../../shared/assets/logo.svg'
 import AppLink, {AppLinkTheme} from "../../../shared/ui/AppLink/AppLink";
 import {RoutePath} from "../../../shared/config/routeConfig/routeConfig";
+import Logo from "../../../shared/ui/Logo/Logo";
 
 export const Navbar = memo(() => {
     return (
         <div className={cls.navbar}>
             <div className={cls.logo}>
                 <AppLink className={cls.authBtn} to={RoutePath.main} theme={AppLinkTheme.PRIMARY}>
-                    <LogoIcon/>
+                    <Logo/>
                 </AppLink>
             </div>
             <div className={cls.links}>
                 <AppLink className={cls.link} to={RoutePath.main} theme={AppLinkTheme.UNDERLINED}>
                     Главная
                 </AppLink>
-                <AppLink className={cls.link}  to={RoutePath.main}>
+                <AppLink className={cls.link} to={RoutePath.main}>
                     Индивидуальные уроки
                 </AppLink>
-                <AppLink className={cls.link}  to={RoutePath.main}>
+                <AppLink className={cls.link} to={RoutePath.main}>
                     Групповые занятия
                 </AppLink>
             </div>
