@@ -40,6 +40,8 @@ export const IndividualCourseBlock = memo((props: IndividualCourseProps) => {
 		}
 	}, [dispatch])
 
+	// console.log(individualsCourses, 'individualsCourses')
+
 	return (
 		<div className={classNames(cls.individualCourse, {}, [className])}>
 			<h2 className={cls.title}>Лучшие индивидуальные занятия</h2>

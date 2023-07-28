@@ -22,7 +22,7 @@ export const CourseList = memo((props: CourseListProps) => {
 			<div className={classNames(cls.CourseList, {}, [className])}>
 				{categoryId
 					? courses
-							.filter(course => course.categoryIds === parseInt(categoryId))
+							.filter(course => course.category.id === parseInt(categoryId))
 							.map(course => (
 								<Card course={course} key={course.id} type={type} />
 							))
