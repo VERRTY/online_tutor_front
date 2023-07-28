@@ -1,13 +1,12 @@
-.CourseList{
+.CourseList {
     max-width: 1600px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
-.loading{
+.loading {
     min-height: 230px;
     display: flex;
     align-items: center;

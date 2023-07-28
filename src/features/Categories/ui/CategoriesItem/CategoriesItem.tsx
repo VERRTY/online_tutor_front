@@ -25,7 +25,7 @@ export const CategoriesItem = memo((props: CategoriesItemProps) => {
 
     return (
         <div className={classNames(cls.CategoriesItem,{},[className])}>
-            <Button onClick={handleRedirect} theme={ButtonTheme.DEFAULT}>
+            <Button onClick={handleRedirect} theme={ButtonTheme.DEFAULT} className={cls.CategoriesBtn}>
                 {category.name}
             </Button>
         </div>

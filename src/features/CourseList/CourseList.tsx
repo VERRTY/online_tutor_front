@@ -25,7 +25,7 @@ export const CourseList = memo((props: CourseListProps) => {
         <>
             <div className={classNames(cls.CourseList, {}, [className])}>
                 {courses.map((course) =>
-                    <Card course={course} key={course.id} type={type}/>
+                    <Card course={course} key={course.id} type={type} className={cls.CategoriesItem}/>
                 )}
             </div>
             {isLoading && <div className={cls.loading}>
