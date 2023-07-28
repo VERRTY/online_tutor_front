@@ -4,71 +4,38 @@ import { ReactComponent as PesonSVG } from '../../../images/svg/person.svg'
 import { ReactComponent as GroupPerson } from '../../../images/svg/groupOfPerson.svg'
 import { useEffect, useState } from 'react'
 import { useHttp } from '../../../app/providers/axios/api'
-
-interface Data {
-	id: number
-	description: string
-	coverUrl: string
-	finishDateTime: string
-	createdDate: string
-	price: number
-	title: string
-	startDateTime: string
-}
+import { IndividualCourseBlock } from '../../../features/IndividualCourseBlick'
+import { GroupCourseBlock } from '../../../features/GroupCourseBlick'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getCategories, getCategoriesById } from '../../../features/Categories'
+import { useAppDispatch } from '../../../shared/hooks/useAppDispatch/useAppDispatch'
+import { getCategoriesLoading } from '../../../features/Categories/model/selectors/CategoriesSelectors'
+import { fetchCategories } from '../../../features/Categories/model/services/fetchCategories'
 
 const CategoryPage = () => {
-	const items = [
-		{
-			id: 1,
-			title: 'Hello',
-			status: 3,
-		},
-		{
-			id: 2,
-			title: 'Hello',
-			status: 3,
-		},
-		{
-			id: 3,
-			title: 'Hello',
-			status: 3,
-		},
-		{
-			id: 4,
-			title: 'Hello',
-			status: 5,
-		},
-		{
-			id: 5,
-			title: 'Hello',
-			status: 5,
-		},
-	]
+	const params = useParams()
+	const { id } = params
 
-	const [uploadData, setUploadData] = useState<Data[]>()
-
-	const { loading, request } = useHttp()
-
-	const getData = async () => {
-		try {
-			const data: any = await request('classes/groups', 'get')
-			console.log(data)
-			setUploadData(data)
-		} catch (error) {
-			console.error('Error fetching courses:', error)
-		}
-	}
+	const dispatch = useAppDispatch()
+	const isLoading = useSelector(getCategoriesLoading)
 
 	useEffect(() => {
-		getData()
+		const getCategories = async () => {
+			await dispatch(fetchCategories())
+		}
+		getCategories()
 	}, [])
+
+	const categories = useSelector(getCategories)
+
+	const myCategory = categories.find(item => item.id === parseInt(id))
 
 	return (
 		<div className={cls.Category}>
 			<div className={cls.mainInfo}>
 				<div className={cls.text}>
-					<h1>Английский язык</h1>
-					<p>Изучить английский язык с нуля до TOEFL</p>
+					{myCategory && <h1>{myCategory.name}</h1>}
 				</div>
 				<div className={cls.image}>
 					<HomeSVG />
@@ -89,40 +56,10 @@ const CategoryPage = () => {
 				</div>
 			</div>
 			<div className={cls.topIndividual}>
-				<h1>Лучшие индивидуальные занятия</h1>
-				<div className={cls.itemsBlock}>
-					{uploadData &&
-						uploadData.map(item => (
-							<div className={cls.item} key={item.id}>
-								<div>{item.title}</div>
-								<div>
-									<img src={item.coverUrl} alt='' />
-								</div>
-							</div>
-						))}
-				</div>
-				<div
-					style={{ display: 'flex', justifyContent: 'center', marginTop: 48 }}
-				>
-					<button className={cls.seeAll}>Посмотреть все</button>
-				</div>
+				<IndividualCourseBlock categoryId={id} />
 			</div>
 			<div className={cls.topIndividual}>
-				<h1>Лучшие индивидуальные занятия</h1>
-				<div className={cls.itemsBlock}>
-					{items
-						.filter(item => item.status === 3)
-						.map(item => (
-							<div key={item.id} className={cls.groupItem}>
-								<div>{item.title}</div>
-							</div>
-						))}
-				</div>
-				<div
-					style={{ display: 'flex', justifyContent: 'center', marginTop: 48 }}
-				>
-					<button className={cls.seeAll}>Посмотреть все</button>
-				</div>
+				<GroupCourseBlock categoryId={id} />
 			</div>
 		</div>
 	)
