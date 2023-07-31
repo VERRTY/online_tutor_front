@@ -15,7 +15,7 @@ const CardDetails = memo((props: CardDetailsProps) => {
 	const { id, cost, classType } = props
 
 	const redirectToIndividualPage = () => {
-		navigate(AppRoutes.COURSE + '/' + id)
+		navigate('/' + AppRoutes.COURSE+ '/' + classType + '/' + id)
 	}
 
 	return (

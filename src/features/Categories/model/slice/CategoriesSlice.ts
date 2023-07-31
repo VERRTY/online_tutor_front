@@ -36,7 +36,9 @@ const initialState: CategoriesSchema = {
 export const categoriesSlice = createSlice({
     name: 'categories',
     initialState,
-    reducers: {},
+    reducers: {
+
+    },
     extraReducers: (build) => {
         build
             .addCase(fetchCategories.pending, (state, action) => {

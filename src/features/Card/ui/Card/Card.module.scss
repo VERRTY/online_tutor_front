@@ -14,6 +14,19 @@
 
 .groups {
     width: 340px;
+
+    .img {
+        z-index: -1;
+        padding: 0 -16px;
+
+        img {
+            border-radius: 15px;
+            //width: 230px;
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
 }
 
 .info{
@@ -41,11 +54,13 @@
 
 .img {
     z-index: -1;
+    padding: 0 -16px;
 
     img {
         border-radius: 15px;
-        width: 230px;
+        //width: 230px;
         height: 150px;
-        object-fit: fill;
+        width: 100%;
+        object-fit: cover;
     }
 }

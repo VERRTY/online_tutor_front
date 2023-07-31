@@ -3,8 +3,15 @@ import PresentationImg from '../../../shared/assets/Presentation.png'
 import {IndividualCourseBlock} from "../../../features/IndividualCourseBlick";
 import {GroupCourseBlock} from "../../../features/GroupCourseBlick";
 import {CategoriesList} from "../../../features/Categories/ui/CategoriesList/CategoriesList";
+import {courseGroupActions} from "../../../entitise/CourseGroupe";
+import {useAppDispatch} from "../../../shared/hooks/useAppDispatch/useAppDispatch";
+import {courseIndividualActions} from "../../../entitise/CourseIndividual";
 
 const MainPage = () => {
+    const dispatch = useAppDispatch()
+    dispatch(courseGroupActions.setLimit(6))
+    dispatch(courseIndividualActions.setLimit(10))
+
     return (
         <div className={cls.MainPage}>
             <div className={cls.presentation}>

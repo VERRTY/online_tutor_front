@@ -18,7 +18,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.CATEGORY]: 'category/:id',
 	[AppRoutes.ABOUT]: 'about/:id',
-	[AppRoutes.COURSE]: 'course/:id',
+	[AppRoutes.COURSE]: 'course/:typeCourse/:id',
 
 	// last
 	// [AppRoutes.NOT_FOUND]: '*',

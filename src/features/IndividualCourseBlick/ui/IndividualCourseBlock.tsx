@@ -30,17 +30,18 @@ export const IndividualCourseBlock = memo((props: IndividualCourseProps) => {
 	}
 
 	useEffect(() => {
+		dispatch(courseIndividualActions.clear())
 		const getIndividuals = async () => {
 			await dispatch(fetchIndividualsCourses({}))
 		}
 		getIndividuals()
 
 		return () => {
-			dispatch(courseIndividualActions.clear())
+			dispatch(courseIndividualActions.setPage(0))
 		}
-	}, [dispatch])
 
-	// console.log(individualsCourses, 'individualsCourses')
+
+	}, [dispatch])
 
 	return (
 		<div className={classNames(cls.individualCourse, {}, [className])}>

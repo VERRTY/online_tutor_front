@@ -2,23 +2,26 @@ import cls from './Category.module.scss'
 import { ReactComponent as HomeSVG } from '../../../images/svg/home.svg'
 import { ReactComponent as PesonSVG } from '../../../images/svg/person.svg'
 import { ReactComponent as GroupPerson } from '../../../images/svg/groupOfPerson.svg'
-import { useEffect, useState } from 'react'
-import { useHttp } from '../../../app/providers/axios/api'
+import { useEffect } from 'react'
 import { IndividualCourseBlock } from '../../../features/IndividualCourseBlick'
 import { GroupCourseBlock } from '../../../features/GroupCourseBlick'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { getCategories, getCategoriesById } from '../../../features/Categories'
+import { getCategories} from '../../../features/Categories'
 import { useAppDispatch } from '../../../shared/hooks/useAppDispatch/useAppDispatch'
-import { getCategoriesLoading } from '../../../features/Categories/model/selectors/CategoriesSelectors'
 import { fetchCategories } from '../../../features/Categories/model/services/fetchCategories'
+import {courseIndividualActions} from "../../../entitise/CourseIndividual";
+import {courseGroupActions} from "../../../entitise/CourseGroupe";
 
 const CategoryPage = () => {
 	const params = useParams()
 	const { id } = params
 
 	const dispatch = useAppDispatch()
-	const isLoading = useSelector(getCategoriesLoading)
+	// const isLoading = useSelector(getCategoriesLoading)
+	const categories = useSelector(getCategories)
+	dispatch(courseIndividualActions.setLimit(5))
+	dispatch(courseGroupActions.setLimit(3))
 
 	useEffect(() => {
 		const getCategories = async () => {
@@ -27,7 +30,6 @@ const CategoryPage = () => {
 		getCategories()
 	}, [])
 
-	const categories = useSelector(getCategories)
 
 	const myCategory = categories.find(item => item.id === parseInt(id))
 

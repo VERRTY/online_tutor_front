@@ -12,6 +12,7 @@ import {
 import { fetchGroupCourses } from '../../../entitise/CourseGroupe/model/services/fetchGroupCourses'
 import { courseGroupActions } from '../../../entitise/CourseGroupe'
 import { CardType } from '../../Card/ui/Card/Card'
+import {courseIndividualActions} from "../../../entitise/CourseIndividual";
 
 interface IndividualCourseProps {
 	className?: string
@@ -24,7 +25,6 @@ export const GroupCourseBlock = memo((props: IndividualCourseProps) => {
 	const dispatch = useAppDispatch()
 	const GroupCourses = useSelector(getGroupCourses)
 	const isLoading = useSelector(getGroupCoursesLoading)
-	dispatch(courseGroupActions.setLimit(9))
 
 	const handleAddCourse = async () => {
 		dispatch(courseGroupActions.incrementPage())
@@ -32,14 +32,16 @@ export const GroupCourseBlock = memo((props: IndividualCourseProps) => {
 	}
 
 	useEffect(() => {
+		dispatch(courseGroupActions.clear())
 		const getIndividuals = async () => {
 			await dispatch(fetchGroupCourses({}))
 		}
 		getIndividuals()
 
 		return () => {
-			dispatch(courseGroupActions.clear())
+			dispatch(courseGroupActions.setPage(0))
 		}
+
 	}, [dispatch])
 
 	return (
