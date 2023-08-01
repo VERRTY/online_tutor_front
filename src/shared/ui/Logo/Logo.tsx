@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import cls from './Logo.module.scss'
 import classNames from "classnames";
 
@@ -11,7 +11,7 @@ interface LogoProps {
     theme?: LogoTheme
 }
 
-const Logo = (props: LogoProps) => {
+const Logo = memo((props: LogoProps) => {
     const {
         theme = LogoTheme.DEFAULT
     } = props
@@ -21,6 +21,6 @@ const Logo = (props: LogoProps) => {
             LOGO
         </div>
     );
-};
+});
 
 export default Logo;

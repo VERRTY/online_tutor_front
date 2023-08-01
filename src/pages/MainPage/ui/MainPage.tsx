@@ -6,6 +6,7 @@ import {CategoriesList} from "../../../features/Categories/ui/CategoriesList/Cat
 import {courseGroupActions} from "../../../entitise/CourseGroupe";
 import {useAppDispatch} from "../../../shared/hooks/useAppDispatch/useAppDispatch";
 import {courseIndividualActions} from "../../../entitise/CourseIndividual";
+import {Input} from "../../../shared/ui/Input/Input";
 
 const MainPage = () => {
     const dispatch = useAppDispatch()
@@ -14,6 +15,7 @@ const MainPage = () => {
 
     return (
         <div className={cls.MainPage}>
+            <Input />
             <div className={cls.presentation}>
                 <div className={cls.mainText}>
                     <h1>
