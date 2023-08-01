@@ -1,8 +1,8 @@
-import {AppRoutes, RoutePath} from "../config/routeConfig/routeConfig";
+import {RoutePath} from "../config/routeConfig/routeConfig";
 import {AppLinkTheme} from "../ui/AppLink/AppLink";
 
 
-interface NavbarItemsProps{
+interface NavbarItemsProps {
     title: string,
     path: string,
     theme: AppLinkTheme

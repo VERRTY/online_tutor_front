@@ -25,7 +25,7 @@ export const RegistrationForm = ({className}: RegistrationProps) => {
     // const categoriesName = useSelector(getCategoriesName)
 
     const dispatch = useAppDispatch()
-    const { typeReg } = useParams()
+    const {typeReg } = useParams()
     const candidate = useSelector(getRegistration)
     const navigate = useNavigate()
     // useEffect(() => {
