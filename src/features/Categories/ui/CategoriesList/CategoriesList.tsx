@@ -39,7 +39,7 @@ export const CategoriesList = memo((props: CategoriesListProps) => {
     return (
         <div className={classNames(cls.CategoriesList,{},[className])}>
             {categories.map((category) =>
-                <CategoriesItem className={cls.CategoriesItem} category={category}/>
+                <CategoriesItem key={category.id} className={cls.CategoriesItem} category={category}/>
             )}
         </div>
     );

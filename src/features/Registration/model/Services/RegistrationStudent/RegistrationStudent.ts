@@ -24,7 +24,7 @@ export const registrationStudent = createAsyncThunk<{}, registrationProps, { rej
                 throw new Error();
             }
 
-            return response;
+            return response.data;
         }catch (e){
             return thunkAPI.rejectWithValue('error');
         }

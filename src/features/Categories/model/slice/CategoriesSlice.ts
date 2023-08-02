@@ -5,32 +5,7 @@ import {fetchCategories} from "../services/fetchCategories";
 const initialState: CategoriesSchema = {
     isLoading: false,
     error: undefined,
-    data: [
-        {
-            id: 1,
-            name: 'Изучить английский язык с нуля до TOEFL'
-        },
-        {
-            id: 2,
-            name: 'Подготовиться к ОРТ, НЦТ и гос. экзаменам'
-        },
-        {
-            id: 3,
-            name: 'Подготовиться к ОРТ, НЦТ и гос. экзаменам'
-        },
-        {
-            id: 4,
-            name: 'Подготовиться к ОРТ, НЦТ и гос. экзаменам'
-        },
-        {
-            id: 5,
-            name: 'Подготовиться к ОРТ, НЦТ и гос. экзаменам'
-        },
-        {
-            id: 6,
-            name: 'Подготовиться к ОРТ, НЦТ и гос. экзаменам'
-        },
-    ]
+    data: undefined
 }
 
 export const categoriesSlice = createSlice({

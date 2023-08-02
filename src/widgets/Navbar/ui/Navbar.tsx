@@ -5,14 +5,24 @@ import {AppRoutes, RoutePath} from "../../../shared/config/routeConfig/routeConf
 import Logo from "../../../shared/ui/Logo/Logo";
 import {useNavigate} from "react-router-dom";
 import Button, {ButtonTheme} from "../../../shared/ui/Button/Button";
-import {RegistrationPath} from "../../../pages/RegistrationPage/const/RegistrationPath";
+import {useSelector} from "react-redux";
+import {getUser} from "../../../entitise/User/model/Selectors/userSelectors";
+import {useAppDispatch} from "../../../shared/hooks/useAppDispatch/useAppDispatch";
+import {userActions} from "../../../entitise/User";
 
 export const Navbar = memo(() => {
 
     const navigate = useNavigate()
-    const login = useCallback(() => {
-        navigate('/' + AppRoutes.REGISTRATION + '/' + RegistrationPath.STUDENT)
+    const dispatch = useAppDispatch()
+    const auth = useSelector(getUser)
+
+    const onLoginClick = useCallback(() => {
+        navigate('/' + AppRoutes.AUTH)
     }, [navigate])
+
+    const onLogoutClick = () => {
+        dispatch(userActions.logout())
+    }
 
     return (
         <div className={cls.navbar}>
@@ -33,13 +43,25 @@ export const Navbar = memo(() => {
                 </AppLink>
             </div>
             <div className={cls.auth}>
-                <Button
-                    className={cls.authBtn}
-                    onClick={login}
-                    theme={ButtonTheme.DEFAULT}
-                >
-                    Войти
-                </Button>
+                {auth
+                    ?
+                    <Button
+                        className={cls.authBtn}
+                        onClick={onLogoutClick}
+                        theme={ButtonTheme.DEFAULT}
+                    >
+                        Выйти
+                    </Button>
+                    :
+                    <Button
+                        className={cls.authBtn}
+                        onClick={onLoginClick}
+                        theme={ButtonTheme.DEFAULT}
+                    >
+                        Войти
+                    </Button>
+                }
+
             </div>
         </div>
     );

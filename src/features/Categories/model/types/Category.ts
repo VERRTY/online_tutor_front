@@ -5,7 +5,7 @@ export interface Category {
 }
 
 export interface CategoriesSchema {
-    data: Category[],
+    data?: Category[],
     isLoading: boolean,
     error?: object,
 }

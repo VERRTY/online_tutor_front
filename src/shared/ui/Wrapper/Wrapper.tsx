@@ -9,7 +9,7 @@ export enum WrapperTheme{
 
 interface WrapperProps {
     className?: string
-    theme: WrapperTheme
+    theme?: WrapperTheme
     children: ReactNode
 }
 
@@ -17,7 +17,7 @@ interface WrapperProps {
 export const Wrapper = memo((props: WrapperProps) => {
     const {
         className,
-        theme,
+        theme = WrapperTheme.DEFAULT,
         children
     } = props
     return (

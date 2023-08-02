@@ -15,6 +15,7 @@ import {registrationStudent} from "../model/Services/RegistrationStudent/Registr
 import {
     registrationSpecialists
 } from "../model/Services/RegistrationSpecialists/RegistrationSpecialists";
+import {AppRoutes} from "../../../shared/config/routeConfig/routeConfig";
 
 interface RegistrationProps {
     className?: string
@@ -90,7 +91,7 @@ export const RegistrationForm = ({className}: RegistrationProps) => {
             result = await dispatch(registrationStudent(candidate))
         }
         if (result.meta.requestStatus === 'fulfilled') {
-            navigate('/')
+            navigate('/' + AppRoutes.AUTH)
             dispatch(registrationActions.setDefault())
         }
     }, [dispatch,candidate, navigate, typeReg])
