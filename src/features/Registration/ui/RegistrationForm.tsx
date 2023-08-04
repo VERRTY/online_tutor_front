@@ -9,7 +9,10 @@ import {useAppDispatch} from "../../../shared/hooks/useAppDispatch/useAppDispatc
 import {useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
 import {RegistrationPath} from "../../../pages/RegistrationPage/const/RegistrationPath";
-import {getRegistration} from "../model/Selectors/RegistrationSelectors";
+import {
+    getRegistration,
+    getRegistrationLoading,
+} from "../model/Selectors/RegistrationSelectors";
 import {registrationActions} from "../model/slice/RegistrationSlice";
 import {registrationStudent} from "../model/Services/RegistrationStudent/RegistrationStudent";
 import {
@@ -23,12 +26,12 @@ interface RegistrationProps {
 }
 
 export const RegistrationForm = ({className}: RegistrationProps) => {
-    // const categoriesName = useSelector(getCategoriesName)
 
     const dispatch = useAppDispatch()
     const {typeReg } = useParams()
     const candidate = useSelector(getRegistration)
     const navigate = useNavigate()
+    const Loading = useSelector(getRegistrationLoading)
     // useEffect(() => {
     //     dispatch(fetchCategories)
     // }, [])
@@ -135,7 +138,7 @@ export const RegistrationForm = ({className}: RegistrationProps) => {
                 {/*    className={cls.input}*/}
                 {/*/>*/}
             </div>
-            <Button onClick={onRegistrationClick}>
+            <Button onClick={onRegistrationClick} disabled={Loading}>
                 Зарегистрироваться
             </Button>
         </div>

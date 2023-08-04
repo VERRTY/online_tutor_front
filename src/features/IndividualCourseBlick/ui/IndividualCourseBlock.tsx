@@ -2,7 +2,7 @@ import cls from './IndividualCourseBlick.module.scss'
 import { CourseList } from '../../CourseList/CourseList'
 import Button, { ButtonTheme } from '../../../shared/ui/Button/Button'
 import { useSelector } from 'react-redux'
-import { fetchIndividualsCourses } from '../../../entitise/CourseIndividual/model/services/fetchIndividualsCourses'
+import { fetchIndividualsCourses } from '../../../entitise/CourseIndividual/model/services/fetchIndividualCourse/fetchIndividualsCourses'
 import { useAppDispatch } from '../../../shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from 'classnames'
 import { memo, useEffect } from 'react'
@@ -39,8 +39,6 @@ export const IndividualCourseBlock = memo((props: IndividualCourseProps) => {
 		return () => {
 			dispatch(courseIndividualActions.setPage(0))
 		}
-
-
 	}, [dispatch])
 
 	return (

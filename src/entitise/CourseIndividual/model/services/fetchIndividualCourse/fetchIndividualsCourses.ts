@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {$api} from "../../../../shared/API/api";
-import {getIndividualsCoursesLimit, getIndividualsCoursesPage} from "../selectors/individualsCoursesSelectors";
-import {ThunkConfig} from "../../../../app/providers/StoreProvider/config/StateSchema";
-import {Course} from "../../../Course";
+import {$api} from "../../../../../shared/API/api";
+import {getIndividualsCoursesLimit, getIndividualsCoursesPage} from "../../selectors/individualsCoursesSelectors";
+import {ThunkConfig} from "../../../../../app/providers/StoreProvider/config/StateSchema";
+import {Course} from "../../../../Course";
 
 
 export const fetchIndividualsCourses = createAsyncThunk<Array<Course>,object, ThunkConfig<object>>(

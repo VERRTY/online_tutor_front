@@ -7,6 +7,7 @@ import {CategoriesItem} from "../CategoriesItem/CategoriesItem";
 import {memo, useEffect} from "react";
 import {fetchCategories} from "../../model/services/fetchCategories";
 import Loader from "../../../../shared/ui/Loader/Loader";
+import {courseIndividualActions} from "../../../../entitise/CourseIndividual";
 interface CategoriesListProps {
     className?: string
 }
@@ -23,6 +24,9 @@ export const CategoriesList = memo((props: CategoriesListProps) => {
             await dispatch(fetchCategories())
         }
         getCategories()
+        return () => {
+            dispatch(courseIndividualActions.clear())
+        }
     }, [])
 
     const categories = useSelector(getCategories)
@@ -38,7 +42,7 @@ export const CategoriesList = memo((props: CategoriesListProps) => {
 
     return (
         <div className={classNames(cls.CategoriesList,{},[className])}>
-            {categories.map((category) =>
+            {categories?.map((category) =>
                 <CategoriesItem key={category.id} className={cls.CategoriesItem} category={category}/>
             )}
         </div>

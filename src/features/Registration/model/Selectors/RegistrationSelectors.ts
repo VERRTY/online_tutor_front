@@ -11,6 +11,6 @@ export const getRegistrationPhoneNumber = (state: StateSchema) => state.Registra
 export const getRegistrationPhoneGender = (state: StateSchema) => state.Registration.candidate.gender
 export const getRegistrationPhoneEducation = (state: StateSchema) => state.Registration.candidate.education
 export const getRegistrationPhoneError = (state: StateSchema) => state.Registration.error
-export const getRegistrationPhoneLoading = (state: StateSchema) => state.Registration.isLoading
+export const getRegistrationLoading = (state: StateSchema) => state.Registration.isLoading
 
 export const getRegistration = (state: StateSchema) => state.Registration.candidate

@@ -4,15 +4,34 @@ import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {StateSchema} from "../../../app/providers/StoreProvider";
 import {Course} from "../../../entitise/Course";
+import {useEffect} from "react";
+import {useAppDispatch} from "../../../shared/hooks/useAppDispatch/useAppDispatch";
+import {
+	fetchIndividualsCourseById
+} from "../../../entitise/CourseIndividual/model/services/fetchIndividualCourseById/fetchIndividualCourseById";
+import {
+	fetchGroupCoursesById
+} from "../../../entitise/CourseGroupe/model/services/fetchGroupCourseById/fetchGroupCourseById";
 
 const CoursePage = () => {
 	const { id, typeCourse } = useParams()
+	const dispatch = useAppDispatch()
+
 	let course: Course;
 	const IndividualCourse = useSelector((state: StateSchema)  =>
 		state.CourseIndividual.data.find(course => course.id === Number(id)))
 
 	const GroupCourse = useSelector((state: StateSchema)  =>
 		state.CourseGroup.data.find(Course => Course.id === Number(id)))
+
+	useEffect(() => {
+		if(typeCourse === 'individual_class') {
+			dispatch(fetchIndividualsCourseById(Number(id)))
+		}else {
+			dispatch(fetchGroupCoursesById(Number(id)))
+
+		}
+	}, [dispatch])
 
 	if(typeCourse === 'individual_class'){
 		course = IndividualCourse
@@ -23,13 +42,13 @@ const CoursePage = () => {
 		<div className={cls.coursePage}>
 			<div className={cls.mainInfo}>
 				<div className={cls.text}>
-					<p>{course.title}</p>
+					<p>{course?.title}</p>
 					<div className={cls.shortInfoBlock}>
-						<img src={course.coverUrl} alt=""/>
+						<img src={course?.coverUrl} alt=""/>
 						<div className={cls.description}>
 							<h2 className={cls.about}>Об этом кворке</h2>
 							<p className={cls.descriptInfo}>
-								{course.description}
+								{course?.description}
 								{/*Доброго времени суток. Я являюсь онлайн репетитором по*/}
 								{/*математике. Учусь на втором курсе математического факультета.*/}
 								{/*Близок к подросткам и легко нахожу нужный подход. Сдал огэ на 5,*/}

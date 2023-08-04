@@ -35,10 +35,10 @@ export const Navbar = memo(() => {
                 <AppLink className={cls.link} to={RoutePath.main} theme={AppLinkTheme.UNDERLINED}>
                     Главная
                 </AppLink>
-                <AppLink className={cls.link} to={RoutePath.main}>
+                <AppLink className={cls.link} to={RoutePath.all} state={'individual'}>
                     Индивидуальные уроки
                 </AppLink>
-                <AppLink className={cls.link} to={RoutePath.main}>
+                <AppLink className={cls.link} to={RoutePath.all } state={'group'}>
                     Групповые занятия
                 </AppLink>
             </div>

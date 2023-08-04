@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchIndividualsCourses} from "../services/fetchIndividualsCourses";
+import {fetchIndividualsCourses} from "../services/fetchIndividualCourse/fetchIndividualsCourses";
 import {Course, CoursesSchema} from "../../../Course";
+import {fetchIndividualsCourseById} from "../services/fetchIndividualCourseById/fetchIndividualCourseById";
 
 const CoursesData: Course[] = [
     // {
@@ -63,20 +64,32 @@ export const courseIndividualSlice = createSlice({
             state.data = []
         }
     },
-    extraReducers: (build)=>{
-        build.addCase(fetchIndividualsCourses.pending, (state, action) =>{
-            state.isLoading = true
-        })
-        .addCase(fetchIndividualsCourses.fulfilled, (state, action) =>{
-            state.isLoading = false
-            state.data.push(...action.payload)
-        })
-        .addCase(fetchIndividualsCourses.rejected, (state, action) =>{
-            state.isLoading = false
-            state.error = action.payload
-        })
+    extraReducers: (build) => {
+        build
+            .addCase(fetchIndividualsCourses.pending, (state, action) => {
+                state.isLoading = true
+            })
+            .addCase(fetchIndividualsCourses.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.data.push(...action.payload)
+            })
+            .addCase(fetchIndividualsCourses.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+            .addCase(fetchIndividualsCourseById.pending, (state, action) => {
+                state.isLoading = true
+            })
+            .addCase(fetchIndividualsCourseById.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.data = [action.payload]
+            })
+            .addCase(fetchIndividualsCourseById.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
     }
 })
 
-export const { actions: courseIndividualActions } = courseIndividualSlice;
-export const { reducer: courseIndividualReducer } = courseIndividualSlice;
+export const {actions: courseIndividualActions} = courseIndividualSlice;
+export const {reducer: courseIndividualReducer} = courseIndividualSlice;

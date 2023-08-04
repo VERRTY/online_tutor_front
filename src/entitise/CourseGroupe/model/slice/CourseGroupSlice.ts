@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Course, CoursesSchema} from "../../../Course";
 import {fetchGroupCourses} from "../services/fetchGroupCourses";
+import {fetchGroupCoursesById} from "../services/fetchGroupCourseById/fetchGroupCourseById";
 
 const CoursesData: Course[] = [
     // {
@@ -63,20 +64,32 @@ export const courseGroupSlice = createSlice({
             state.data = []
         }
     },
-    extraReducers: (build)=>{
-        build.addCase(fetchGroupCourses.pending, (state, action) =>{
-            state.isLoading = true
-        })
-        .addCase(fetchGroupCourses.fulfilled, (state, action) =>{
-            state.isLoading = false
-            state.data.push(...action.payload)
-        })
-        .addCase(fetchGroupCourses.rejected, (state, action) =>{
-            state.isLoading = false
-            state.error = action.payload
-        })
+    extraReducers: (build) => {
+        build
+            .addCase(fetchGroupCourses.pending, (state, action) => {
+                state.isLoading = true
+            })
+            .addCase(fetchGroupCourses.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.data.push(...action.payload)
+            })
+            .addCase(fetchGroupCourses.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+            .addCase(fetchGroupCoursesById.pending, (state, action) => {
+                state.isLoading = true
+            })
+            .addCase(fetchGroupCoursesById.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.data = [action.payload]
+            })
+            .addCase(fetchGroupCoursesById.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
     }
 })
 
-export const { actions: courseGroupActions } = courseGroupSlice;
-export const { reducer: courseGroupReducer } = courseGroupSlice;
+export const {actions: courseGroupActions} = courseGroupSlice;
+export const {reducer: courseGroupReducer} = courseGroupSlice;
